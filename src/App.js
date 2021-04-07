@@ -1,10 +1,11 @@
 import Home from './components/Home'
+import HomeContainer from './containers/homeContainer'
 
 function App() {
 
   return (
     <div className="App">
-    
+      <HomeContainer />
     </div>
   );
 }
