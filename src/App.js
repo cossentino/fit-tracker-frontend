@@ -1,11 +1,10 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Home from './components/Home'
 
 function App() {
 
   return (
     <div className="App">
-      
+      <Home />
     </div>
   );
 }
