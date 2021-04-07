@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import fetchWorkouts from '../actions/fetchWorkouts'
 import { connect } from 'react-redux'
+import Workout from '../components/Workout'
 
 
 class HomeContainer extends Component {
@@ -13,9 +14,7 @@ class HomeContainer extends Component {
     return (
       <div>
         {this.props.workouts.map( w => {
-          return (
-            <p>{w.attributes.workout_type}</p>
-          )
+          return <Workout workout={w} />
         })}
       </div>
     )
