@@ -3,9 +3,7 @@
 const rootReducer = (state = { user: {}, workouts: [] }, action) => {
   switch (action.type) {
     case 'ADD_WORKOUTS':
-      debugger
-      console.log(action.workouts)
-      return null
+      return {...state, workouts: action.workouts }
     default:
       return state
   }

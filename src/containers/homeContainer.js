@@ -5,14 +5,19 @@ import { connect } from 'react-redux'
 
 class HomeContainer extends Component {
 
-
   componentDidMount() {
     this.props.fetchWorkouts()
   }
 
   render() {
     return (
-      <div></div>
+      <div>
+        {this.props.workouts.map( w => {
+          return (
+            <p>{w.attributes.workout_type}</p>
+          )
+        })}
+      </div>
     )
   }
 }
@@ -23,6 +28,12 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+const mapPropsToState = state => {
+  return {
+    workouts: state.workouts
+  }
+}
 
 
-export default connect(null, mapDispatchToProps)(HomeContainer)
+
+export default connect(mapPropsToState, mapDispatchToProps)(HomeContainer)
