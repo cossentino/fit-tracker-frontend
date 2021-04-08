@@ -8,6 +8,7 @@ import {
   useRouteMatch,
   useParams
 } from "react-router-dom";
+import CreateWorkoutForm from './components/CreateWorkoutForm';
 
 function App() {
 
@@ -16,9 +17,16 @@ function App() {
       <NavBar />
       <Router>
         <Switch>
-          <Route path='/'>
+          <Route path='/' exact>
             <HomeContainer />
           </Route>
+          <Route path='/workouts' exact>
+            <HomeContainer />
+          </Route>
+          <Route path='/workouts/create' exact>
+            <CreateWorkoutForm />
+          </Route>
+
         </Switch>
       </Router>
     </div>
