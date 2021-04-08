@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
-import M from 'materialize-css'
+
 
 
 
 class CreateWorkoutForm extends Component {
 
-  componentDidMount() {
-    M.AutoInit()
-  }
 
   constructor() {
     super()
@@ -21,6 +18,7 @@ class CreateWorkoutForm extends Component {
       location: "",
     }
   }
+
 
 
   handleChange = e => {

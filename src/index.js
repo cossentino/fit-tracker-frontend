@@ -5,18 +5,21 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import App from './App';
-import M from 'materialize-css'
+import { Router } from 'react-router';
+
 // import reportWebVitals from './reportWebVitals';
 
 
 const store = createStore(rootReducer, applyMiddleware(thunk))
-M.AutoInit()
+
 
 
 
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Provider>,
   document.getElementById('root')
 );
