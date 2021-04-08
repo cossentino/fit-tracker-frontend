@@ -18,6 +18,7 @@ class CreateWorkoutForm extends Component {
     }
   }
 
+
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
@@ -25,10 +26,24 @@ class CreateWorkoutForm extends Component {
     })
   }
 
+  handleSubmit = e => {
+    let body = {
+      ...this.state,
+      user_id: 1
+    }
+    fetch('http://localhost:3000/users/1/workouts', {
+      method: "POST", 
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(body)
+    })
+    .then(resp => resp.json())
+    .then(json => console.log(json))
+  }
+
 
   render() {
     return (
-      <form className="container ">
+      <form className="container" onSubmit={this.handleSubmit}>
         <label>Date</label>
         <input type="date" name="workout_type" />
         <label>Workout Type</label>
