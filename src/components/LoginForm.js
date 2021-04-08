@@ -32,7 +32,7 @@ class CreateWorkoutForm extends Component {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify(this.state)
+      body: JSON.stringify( {user: {...this.state} } )
     };
 
     fetch('http://localhost:3000/api/v1/users/login', configurationObject)

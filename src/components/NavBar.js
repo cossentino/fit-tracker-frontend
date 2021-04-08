@@ -8,6 +8,7 @@ const NavBar = props => {
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li><Link to="/workouts">Workouts</Link></li>
           <li><Link to="/workouts/create">Create Workout</Link></li>
+          <li><Link to="/login">Log In</Link></li>
         </ul>
       </div>
     </nav>     
