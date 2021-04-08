@@ -3,8 +3,6 @@ import fetchWorkouts from '../actions/fetchWorkouts'
 import { connect } from 'react-redux'
 import Workout from './Workout'
 
-
-
 class Workouts extends Component {
 
   componentDidMount() {
@@ -13,7 +11,7 @@ class Workouts extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container row">
         {this.props.workouts.map( w => {
           return <Workout workout={w} />
         })}
@@ -33,7 +31,6 @@ const mapPropsToState = state => {
     workouts: state.workouts
   }
 }
-
 
 
 export default connect(mapPropsToState, mapDispatchToProps)(Workouts)

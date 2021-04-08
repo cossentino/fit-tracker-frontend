@@ -1,9 +1,13 @@
+import M from "materialize-css"
 import React, { Component } from 'react'
 
 
 
-
 class CreateWorkoutForm extends Component {
+
+  componentDidMount() {
+    M.AutoInit()
+  }
 
 
   constructor() {

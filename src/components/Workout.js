@@ -3,7 +3,7 @@ import React from 'react'
 const Workout = props => {
   const myWorkout = props.workout.attributes
   return (
-    <div className="row">
+    <div style={{display: 'inline'}}>
       <div className="col s12 m6">
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
