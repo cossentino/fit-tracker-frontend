@@ -1,24 +1,21 @@
-import HomeContainer from './containers/homeContainer'
 import NavBar from './components/NavBar'
-import { Switch, Route } from "react-router-dom";
-import CreateWorkoutForm from './components/CreateWorkoutForm';
+import Workouts from './components/Workouts'
+import CreateWorkoutForm from './components/CreateWorkoutForm'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Workout from './components/Workout';
+
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
+    <Router>
+      <div className="App">
+        <NavBar />
         <Switch>
-          <Route path='/' exact component={HomeContainer}>
-            <HomeContainer />
-          </Route>
-          <Route path='/workouts' exact>
-            <HomeContainer />
-          </Route>
-          <Route path='/workouts/create' exact>
-            <CreateWorkoutForm />
-          </Route>
+          <Route path="/workouts" exact component={Workouts} />
+          <Route path="/workouts/create" exact component={CreateWorkoutForm} />
         </Switch>
-    </div>
+      </div>
+    </Router>
   );
 }
 

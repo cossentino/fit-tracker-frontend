@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import fetchWorkouts from '../actions/fetchWorkouts'
 import { connect } from 'react-redux'
-import Workout from '../components/Workout'
+import Workout from './Workout'
 
 
 
-class HomeContainer extends Component {
+class Workouts extends Component {
 
   componentDidMount() {
     this.props.fetchWorkouts()
@@ -36,4 +36,4 @@ const mapPropsToState = state => {
 
 
 
-export default connect(mapPropsToState, mapDispatchToProps)(HomeContainer)
+export default connect(mapPropsToState, mapDispatchToProps)(Workouts)
