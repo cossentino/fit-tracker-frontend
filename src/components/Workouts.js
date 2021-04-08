@@ -17,6 +17,7 @@ class Workouts extends Component {
           {this.props.workouts.map( w => {
             return <Workout workout={w} />
           })}
+          {this.props.user}
         </div>
       </div>
     )
@@ -31,7 +32,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapPropsToState = state => {
   return {
-    workouts: state.workouts
+    workouts: state.workouts,
+    user: state.user
   }
 }
 

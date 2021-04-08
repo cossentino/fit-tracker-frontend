@@ -1,5 +1,6 @@
 // import M from "materialize-css"
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 
 
@@ -12,15 +13,19 @@ class CreateWorkoutForm extends Component {
   constructor() {
     super()
     this.state = {
-      username: "",
-      password: ""
+      user: {
+        username: "",
+        password: "",
+      },
+      jwt: "",
+      user_id: ""
     }
   }
 
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
-      [name]: value
+      user: {...this.state.user, [name]: value}
     })
   }
 
@@ -32,12 +37,11 @@ class CreateWorkoutForm extends Component {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: JSON.stringify( {user: {...this.state} } )
+      body: JSON.stringify( { user: this.state.user } )
     };
-
-    fetch('http://localhost:3000/api/v1/users/login', configurationObject)
-    .then(resp => resp.json())
-    .then(json => console.log(json))
+      fetch('http://localhost:3000/api/v1/users/login', configurationObject)
+      .then(resp => resp.json())
+      .then(json => console.log(json))
   }
 
 
@@ -52,6 +56,8 @@ class CreateWorkoutForm extends Component {
           <input onChange={this.handleChange} type="password" name="password" />
           <input type="submit" value="submit" />
         </form>
+        {this.state.user.username}
+        {this.state.user.password}
       </div>
 
     )
@@ -60,4 +66,4 @@ class CreateWorkoutForm extends Component {
 
 
 
-export default CreateWorkoutForm
+export default connect()(CreateWorkoutForm)
