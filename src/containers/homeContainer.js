@@ -14,7 +14,6 @@ class HomeContainer extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         {this.props.workouts.map( w => {
           return <Workout workout={w} />
         })}

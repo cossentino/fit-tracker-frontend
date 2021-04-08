@@ -14,7 +14,13 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <HomeContainer />
+      <Router>
+        <Switch>
+          <Route path='/'>
+            <HomeContainer />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
