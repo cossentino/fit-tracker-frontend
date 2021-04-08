@@ -51,8 +51,9 @@ class CreateWorkoutForm extends Component {
 
   render() {
     return (
-      <div>
-        <form className="container" onSubmit={this.handleSubmit}>
+      <div id="create_workout_form" className="container">
+        <h1>Create a New Workout</h1>
+        <form onSubmit={this.handleSubmit}>
           <label>Date</label>
           <input type="date" name="workout_type" />
           <label>Workout Type</label>
@@ -75,7 +76,6 @@ class CreateWorkoutForm extends Component {
           <input type="submit" value="submit" />
           {this.state.miles}
         </form>
-
       </div>
 
     )

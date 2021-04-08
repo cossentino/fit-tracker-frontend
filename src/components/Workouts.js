@@ -11,10 +11,13 @@ class Workouts extends Component {
 
   render() {
     return (
-      <div className="container row">
-        {this.props.workouts.map( w => {
-          return <Workout workout={w} />
-        })}
+      <div id="workouts" className="container">
+        <h1>My Workouts</h1>
+        <div className="row">
+          {this.props.workouts.map( w => {
+            return <Workout workout={w} />
+          })}
+        </div>
       </div>
     )
   }
