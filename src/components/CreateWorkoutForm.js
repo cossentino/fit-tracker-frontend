@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 
+
 class CreateWorkoutForm extends Component {
 
   constructor() {
@@ -9,7 +10,7 @@ class CreateWorkoutForm extends Component {
       date: "",
       workout_type: "",
       miles: "",
-      exert: "",
+      exert: null,
       pace: "",
       notes: "",
       location: "",
@@ -35,7 +36,8 @@ class CreateWorkoutForm extends Component {
         <label>Miles</label>
         <input onChange={this.handleChange} type="text" name="miles" />
         <label>Perceived Exertion (1-10) </label>
-        <input type="range" name="exert" min="0" max="10" />
+        <input type="range" name="exert" min="1" max="10" onChange={this.handleChange}/>
+        {this.state.exert}
         <label>Pace</label>
         <input type="time" name="pace" />
         <label>Notes</label>
