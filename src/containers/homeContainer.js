@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import fetchWorkouts from '../actions/fetchWorkouts'
 import { connect } from 'react-redux'
 import Workout from '../components/Workout'
-import NavBar from '../components/NavBar'
+
 
 
 class HomeContainer extends Component {

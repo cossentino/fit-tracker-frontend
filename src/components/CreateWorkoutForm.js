@@ -26,14 +26,14 @@ class CreateWorkoutForm extends Component {
   }
 
   handleSubmit = e => {
-
+    e.preventDefault()
     const configurationObject = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       },
-      body: {...this.state}
+      body: JSON.stringify({ ...this.state, user_id: 1 })
     };
 
     fetch('http://localhost:3000/api/v1/users/1/workouts', configurationObject)
