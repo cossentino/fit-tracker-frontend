@@ -14,7 +14,6 @@ class CreateWorkoutForm extends Component {
       pace: "",
       notes: "",
       location: "",
-
     }
   }
 
@@ -27,15 +26,17 @@ class CreateWorkoutForm extends Component {
   }
 
   handleSubmit = e => {
-    let body = {
-      ...this.state,
-      user_id: 1
-    }
-    fetch('http://localhost:3000/users/1/workouts', {
-      method: "POST", 
-      headers: {"Content-Type": "application/json"},
-      body: JSON.stringify(body)
-    })
+
+    const configurationObject = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: {...this.state}
+    };
+
+    fetch('http://localhost:3000/api/v1/users/1/workouts', configurationObject)
     .then(resp => resp.json())
     .then(json => console.log(json))
   }
@@ -47,7 +48,7 @@ class CreateWorkoutForm extends Component {
         <label>Date</label>
         <input type="date" name="workout_type" />
         <label>Workout Type</label>
-        <input type="text" name="workout_type" />
+        <input type="text" name="workout_type" onChange={this.handleChange}/>
         <label>Miles</label>
         <input onChange={this.handleChange} type="text" name="miles" />
         <label>Perceived Exertion (1-10) </label>
