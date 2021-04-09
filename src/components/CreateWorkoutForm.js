@@ -32,7 +32,6 @@ class CreateWorkoutForm extends Component {
   }
 
   handleSubmit = e => {
-    debugger
     e.preventDefault()
     const body = { ...this.state }
     fetch(`http://localhost:3000/api/v1/users/${this.props.user.user_id}/workouts`, postConfObj(body))
@@ -63,6 +62,7 @@ class CreateWorkoutForm extends Component {
           <textarea name="notes" onChange={this.handleChange}/>
           <label>Location</label>
           <input type="text" name="location" onChange={this.handleChange}/>
+          <input type="submit" value="submit" />
         </form>
       </div>
 
@@ -70,10 +70,10 @@ class CreateWorkoutForm extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { user: state.user }
-}
+// const mapStateToProps = state => {
+//   return { user: localStorage }
+// }
 
 
 
-export default connect(mapStateToProps)(CreateWorkoutForm)
+export default connect(null)(CreateWorkoutForm)

@@ -10,7 +10,7 @@ class LoginForm extends Component {
   constructor() {
     super()
     this.state = {
-      user: {
+      credentials: {
         username: "",
         password: "",
       },
@@ -22,17 +22,22 @@ class LoginForm extends Component {
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
-      user: {...this.state.user, [name]: value}
+      credentials: {...this.state.credentials, [name]: value}
     })
   }
 
   handleSubmit = e => {
     e.preventDefault()
-    const body = { user: this.state.user }
+    const body = { user: this.state.credentials }
       fetch('http://localhost:3000/api/v1/users/login', postConfObj(body))
       .then(resp => resp.json())
       .then(json => {
-        this.props.setUser({jwt: json.jwt, user_id: json.user.data.id })
+        const userObj = {
+          token: json.jwt,
+          user_id: json.user.data.id
+        }
+        localStorage.setItem('user', JSON.stringify(userObj))
+        this.props.setUser(userObj)
       }).then(() => this.props.history.push('/workouts'))
   }  
 
@@ -60,12 +65,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
 
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
+export default connect(null, mapDispatchToProps)(LoginForm)

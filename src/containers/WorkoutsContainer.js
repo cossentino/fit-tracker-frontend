@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     workouts: state.workouts,
-    user: state.user
+    user: JSON.parse(localStorage.getItem('user'))
   }
 }
 

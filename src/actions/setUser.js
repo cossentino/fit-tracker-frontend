@@ -2,7 +2,7 @@
 
 const setUser = (userInfo) => {
   return (dispatch) => {
-        dispatch({ type: "ADD_USER", userInfo })
+    dispatch({ type: "SET_USER", userInfo })
   }
 }
 
