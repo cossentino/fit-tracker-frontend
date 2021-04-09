@@ -1,6 +1,7 @@
 // import M from "materialize-css"
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import setUser from '../actions/setUser'
 
 
 
@@ -41,8 +42,10 @@ class CreateWorkoutForm extends Component {
     };
       fetch('http://localhost:3000/api/v1/users/login', configurationObject)
       .then(resp => resp.json())
-      .then(json => console.log(json))
-  }
+      .then(json => {
+        this.props.setUser({jwt: json.jwt, user_id: json.user.data.id })
+      })
+  }  
 
 
   render() {
@@ -58,12 +61,25 @@ class CreateWorkoutForm extends Component {
         </form>
         {this.state.user.username}
         {this.state.user.password}
+        {this.props.user ? <p>{this.props.user.jwt}</p> : null }
       </div>
 
     )
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setUser: userInfo => dispatch(setUser(userInfo))
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
 
 
-export default connect()(CreateWorkoutForm)
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateWorkoutForm)
