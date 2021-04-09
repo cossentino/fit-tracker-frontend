@@ -1,4 +1,3 @@
-// import M from "materialize-css"
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import setUser from '../actions/setUser'
@@ -6,10 +5,6 @@ import setUser from '../actions/setUser'
 
 
 class CreateWorkoutForm extends Component {
-
-  // componentDidMount() {
-  //   M.AutoInit()
-  // }
 
   constructor() {
     super()
