@@ -9,7 +9,7 @@ const Workouts = props => {
       <h1>My Workouts</h1>
       <div className="row">
         {props.workouts.map( w => {
-          return <Workout workout={w} delete={props.delete} />
+          return <Workout workout={w} key={w.id} delete={props.delete} />
         })}
       </div>
     </div>
