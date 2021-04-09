@@ -13,9 +13,7 @@ class LoginForm extends Component {
       credentials: {
         username: "",
         password: "",
-      },
-      jwt: "",
-      user_id: ""
+      }
     }
   }
 

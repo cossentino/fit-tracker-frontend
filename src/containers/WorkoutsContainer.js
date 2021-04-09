@@ -8,8 +8,12 @@ import { connect } from 'react-redux'
 
 class WorkoutsContainer extends Component {
 
+  currentUser = () => {
+    return JSON.parse(localStorage.getItem('user')).user_id
+  }
+
   componentDidMount() {
-    this.props.fetchWorkouts(this.props.user.user_id)
+    this.props.fetchWorkouts(this.currentUser())
   }
 
   render() {
@@ -29,7 +33,6 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     workouts: state.workouts,
-    user: JSON.parse(localStorage.getItem('user'))
   }
 }
 
