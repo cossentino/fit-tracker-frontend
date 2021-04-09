@@ -1,5 +1,7 @@
 import React from 'react'
+import deleteWorkout from '../actions/deleteWorkout'
 import { formatDate, capitalizeWord } from '../library'
+import { store } from '../index'
 
 
 
@@ -15,6 +17,7 @@ const Workout = props => {
             <p>Miles: {myWorkout.miles}</p>
             <p>Perceived Exertion: {myWorkout.exert}</p>
             <p>Notes: {myWorkout.notes}</p>
+            <button onClick={() => console.log(store.getState())}>Delete Workout</button>
           </div>
         </div>
       </div>

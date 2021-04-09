@@ -33,7 +33,7 @@ class CreateWorkoutForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const body = { ...this.state, user_id: 1 }
+    const body = { ...this.state }
     fetch(`http://localhost:3000/api/v1/users/${this.props.user.user_id}/workouts`, postConfObj(body))
     .then(resp => resp.json())
     .then(() => this.props.history.push('/workouts'))

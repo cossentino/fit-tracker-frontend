@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import fetchWorkouts from '../actions/fetchWorkouts'
+import deleteWorkout from '../actions/deleteWorkout'
 import Workouts from '../components/Workouts'
 import { connect } from 'react-redux'
 
@@ -7,26 +8,21 @@ import { connect } from 'react-redux'
 
 class WorkoutsContainer extends Component {
 
-
   componentDidMount() {
     this.props.fetchWorkouts(this.props.user.user_id)
   }
 
   render() {
-    return (
-      <Workouts workouts={this.props.workouts} />
-    )
+    return <div id="workouts"><Workouts workouts={this.props.workouts} /></div>
   }
-
-
-
-
 }
+
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchWorkouts: (user_id) => dispatch(fetchWorkouts(user_id))
+    fetchWorkouts: (user_id) => dispatch(fetchWorkouts(user_id)),
+    deleteWorkout: (workout_id) => dispatch(deleteWorkout(workout_id))
   }
 }
 
