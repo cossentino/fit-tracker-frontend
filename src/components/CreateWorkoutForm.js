@@ -1,6 +1,5 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
-// import { connect } from 'react-redux'
 import { postConfObj, currentUser } from '../library'
 import { withRouter } from 'react-router-dom'
 

@@ -1,5 +1,3 @@
-import { store } from '../index'
-import { Redirect } from 'react-router-dom'
 import { currentUser } from '../library'
 
 const deleteWorkout = (workout_id) => {

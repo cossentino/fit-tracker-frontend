@@ -3,17 +3,14 @@ import fetchWorkouts from '../actions/fetchWorkouts'
 import deleteWorkout from '../actions/deleteWorkout'
 import Workouts from '../components/Workouts'
 import { connect } from 'react-redux'
+import { currentUser } from '../library'
 
 
 
 class WorkoutsContainer extends Component {
 
-  currentUser = () => {
-    return JSON.parse(localStorage.getItem('user')).user_id
-  }
-
   componentDidMount() {
-    this.props.fetchWorkouts(this.currentUser())
+    this.props.fetchWorkouts(currentUser())
   }
 
   render() {
