@@ -32,11 +32,11 @@ class CreateWorkoutForm extends Component {
   }
 
   handleSubmit = e => {
+    debugger
     e.preventDefault()
     const body = { ...this.state }
     fetch(`http://localhost:3000/api/v1/users/${this.props.user.user_id}/workouts`, postConfObj(body))
     .then(resp => resp.json())
-    .then(() => this.props.history.push('/workouts'))
   }
 
 
@@ -57,15 +57,12 @@ class CreateWorkoutForm extends Component {
           <input onChange={this.handleChange} type="text" name="miles" />
           <label>Perceived Exertion (1-10) </label>
           <input type="range" name="exert" min="1" max="10" onChange={this.handleChange}/>
-          {this.state.exert}
           <label>Pace</label>
           <input type="time" name="pace" onChange={this.handleChange}/>
           <label>Notes</label>
           <textarea name="notes" onChange={this.handleChange}/>
           <label>Location</label>
           <input type="text" name="location" onChange={this.handleChange}/>
-          <input type="submit" value="submit" />
-          {this.state.miles}
         </form>
       </div>
 
