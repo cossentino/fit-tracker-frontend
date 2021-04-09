@@ -9,25 +9,24 @@ import { store } from './index'
 function App() {
 
 
-
-  React.useEffect(() => {
-    let user = {}
+  React.useEffect(() => { 
     localStorage.setItem('user', JSON.stringify(store.getState().user))
-    user = localStorage.getItem('user')
-    console.log(user)
+    if (store.getState().user !== {} ) {
+      store.dispatch({type: 'LOG_IN'})
+    }
   })
+
+    
 
   return (
     <Router>
       <div className="App">
         <NavBar />
-        {localStorage.getItem('user') ? 
         <Switch>
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/create" exact component={CreateWorkoutForm} />
           <Route path="/login" exact component={LoginForm} />
         </Switch>
-        : <LoginForm />}
       </div>
     </Router>
   );
