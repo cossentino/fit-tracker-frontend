@@ -5,7 +5,7 @@ import { postConfObj } from '../library'
 
 
 
-class CreateWorkoutForm extends Component {
+class LoginForm extends Component {
 
   constructor() {
     super()
@@ -68,4 +68,4 @@ const mapStateToProps = state => {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateWorkoutForm)
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

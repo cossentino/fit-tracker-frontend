@@ -11,7 +11,7 @@ const Workout = props => {
       <div className="col s12 m6">
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
-            <span className="card-title">{`${formatDate(myWorkout.date)} - ${myWorkout.workout_type}`}</span>
+            <span className="card-title">{`${formatDate(myWorkout.date)} - ${capitalizeWord(myWorkout.workout_type)}`}</span>
             <p>Miles: {myWorkout.miles}</p>
             <p>Perceived Exertion: {myWorkout.exert}</p>
             <p>Notes: {myWorkout.notes}</p>

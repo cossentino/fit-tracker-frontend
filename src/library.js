@@ -4,9 +4,13 @@ export const formatDate = date => {
 }
 
 export const capitalizeWord = word => {
-  let wordArray = word.split("")
-  wordArray[0] = wordArray[0].toUpperCase()
-  return wordArray.join("")
+  if (typeof word === "string" && word !== "" ) {
+    let wordArray = word.split("")
+    wordArray[0] = wordArray[0].toUpperCase()
+    return wordArray.join("")
+  } else {
+    return word
+  }
 }
 
 export const postConfObj = body => {
