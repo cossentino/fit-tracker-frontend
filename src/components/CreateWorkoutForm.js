@@ -1,7 +1,9 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { postConfObj } from '../library'
+// import { connect } from 'react-redux'
+import { postConfObj, currentUser } from '../library'
+import { withRouter } from 'react-router-dom'
+
 
 
 
@@ -34,8 +36,9 @@ class CreateWorkoutForm extends Component {
   handleSubmit = e => {
     e.preventDefault()
     const body = { ...this.state }
-    fetch(`http://localhost:3000/api/v1/users/${this.props.user.user_id}/workouts`, postConfObj(body))
+    fetch(`http://localhost:3000/api/v1/users/${currentUser()}/workouts`, postConfObj(body))
     .then(resp => resp.json())
+    .then(this.props.history.push('/workouts'))
   }
 
 
@@ -70,10 +73,8 @@ class CreateWorkoutForm extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return { user: localStorage }
-// }
 
 
 
-export default connect(null)(CreateWorkoutForm)
+
+export default withRouter(CreateWorkoutForm)

@@ -23,3 +23,7 @@ export const postConfObj = body => {
       body: JSON.stringify(body)
   }
 }
+
+export const currentUser = () => {
+  return JSON.parse(localStorage.getItem('user')).user_id
+}
