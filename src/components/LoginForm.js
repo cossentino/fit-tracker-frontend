@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import setUser from '../actions/setUser'
+import { postConfObj } from '../library'
 
 
 
@@ -27,15 +28,8 @@ class CreateWorkoutForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const configurationObject = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify( { user: this.state.user } )
-    };
-      fetch('http://localhost:3000/api/v1/users/login', configurationObject)
+    const body = { user: this.state.user }
+      fetch('http://localhost:3000/api/v1/users/login', postConfObj(body))
       .then(resp => resp.json())
       .then(json => {
         this.props.setUser({jwt: json.jwt, user_id: json.user.data.id })
@@ -54,9 +48,6 @@ class CreateWorkoutForm extends Component {
           <input onChange={this.handleChange} type="password" name="password" />
           <input type="submit" value="submit" />
         </form>
-        {this.state.user.username}
-        {this.state.user.password}
-        {this.props.user ? <p>{this.props.user.jwt}</p> : null }
       </div>
 
     )

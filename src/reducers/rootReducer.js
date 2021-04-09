@@ -1,11 +1,11 @@
 
 
-const rootReducer = (state = { user: {}, workouts: [], logged_in: false }, action) => {
+const rootReducer = (state = { user: {user_id: 1}, workouts: [], logged_in: false }, action) => {
   switch (action.type) {
     case 'ADD_WORKOUTS':
       return {...state, workouts: action.workouts }
     case 'ADD_USER':
-      return { ...state , user: action.userInfo }
+      return { ...state , user: action.userInfo, logged_in: true }
     default:
       return state
   }

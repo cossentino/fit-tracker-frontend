@@ -1,5 +1,7 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { postConfObj } from '../library'
 
 
 
@@ -8,7 +10,6 @@ class CreateWorkoutForm extends Component {
   componentDidMount() {
     M.AutoInit()
   }
-
 
   constructor() {
     super()
@@ -23,8 +24,6 @@ class CreateWorkoutForm extends Component {
     }
   }
 
-
-
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
@@ -34,18 +33,10 @@ class CreateWorkoutForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const configurationObject = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({ ...this.state, user_id: 1 })
-    };
-
-    fetch('http://localhost:3000/api/v1/users/1/workouts', configurationObject)
+    const body = { ...this.state, user_id: 1 }
+    fetch(`http://localhost:3000/api/v1/users/${this.props.user.user_id}/workouts`, postConfObj(body))
     .then(resp => resp.json())
-    .then(json => console.log(json))
+    .then(() => this.props.history.push('/workouts'))
   }
 
 
@@ -55,7 +46,7 @@ class CreateWorkoutForm extends Component {
         <h1>Create a New Workout</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Date</label>
-          <input type="date" name="workout_type" />
+          <input type="date" name="date" onChange={this.handleChange}/>
           <label>Workout Type</label>
           <select name="workout_type" onChange={this.handleChange}>
             <option value="run">Run</option>
@@ -68,11 +59,11 @@ class CreateWorkoutForm extends Component {
           <input type="range" name="exert" min="1" max="10" onChange={this.handleChange}/>
           {this.state.exert}
           <label>Pace</label>
-          <input type="time" name="pace" />
+          <input type="time" name="pace" onChange={this.handleChange}/>
           <label>Notes</label>
-          <textarea name="notes" />
+          <textarea name="notes" onChange={this.handleChange}/>
           <label>Location</label>
-          <input type="text" name="location" />
+          <input type="text" name="location" onChange={this.handleChange}/>
           <input type="submit" value="submit" />
           {this.state.miles}
         </form>
@@ -82,6 +73,10 @@ class CreateWorkoutForm extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return { user: state.user }
+}
 
 
-export default CreateWorkoutForm
+
+export default connect(mapStateToProps)(CreateWorkoutForm)

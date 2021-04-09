@@ -4,6 +4,8 @@ const fetchWorkouts = (user_id) => {
     .then(resp => resp.json() )
     .then(json => {
         dispatch({ type: "ADD_WORKOUTS", workouts: json.data })
+        console.log(json)
+        return null
     })
   }
 }

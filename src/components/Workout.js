@@ -1,10 +1,6 @@
 import React from 'react'
+import { formatDate, capitalizeWord } from '../library'
 
-
-const formatDate = date => {
-  const dSplit = new Date(date).toDateString().split(" ")
-  return `${dSplit[1]} ${dSplit[2]}, ${dSplit[3]}`
-}
 
 
 
@@ -16,9 +12,9 @@ const Workout = props => {
         <div className="card blue-grey darken-1">
           <div className="card-content white-text">
             <span className="card-title">{`${formatDate(myWorkout.date)} - ${myWorkout.workout_type}`}</span>
-            <p>{myWorkout.miles}</p>
-            <p>{myWorkout.notes}</p>
-            <p>{myWorkout.exert}</p>
+            <p>Miles: {myWorkout.miles}</p>
+            <p>Perceived Exertion: {myWorkout.exert}</p>
+            <p>Notes: {myWorkout.notes}</p>
           </div>
         </div>
       </div>
