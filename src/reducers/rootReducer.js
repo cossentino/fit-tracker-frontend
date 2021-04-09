@@ -10,9 +10,9 @@ const initialState =
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_WORKOUTS':
-      return {...state, workouts: action.workouts }
+      return {logged_in: true , workouts: action.workouts }
     case 'SET_USER':
-      return { ...state , user: action.userInfo, logged_in: true }
+      return { ...state, logged_in: true }
     case 'DELETE_WORKOUT':
       return { ...state, workouts: state.workouts.filter( w => w.id !== action.id )}
     case 'LOG_OUT':
