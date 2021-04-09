@@ -13,7 +13,7 @@ class WorkoutsContainer extends Component {
   }
 
   render() {
-    return <div id="workouts"><Workouts workouts={this.props.workouts} /></div>
+    return <div id="workouts"><Workouts workouts={this.props.workouts} delete={this.props.deleteWorkout}/></div>
   }
 }
 

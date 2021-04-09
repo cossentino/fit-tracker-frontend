@@ -17,7 +17,7 @@ const Workout = props => {
             <p>Miles: {myWorkout.miles}</p>
             <p>Perceived Exertion: {myWorkout.exert}</p>
             <p>Notes: {myWorkout.notes}</p>
-            <button onClick={() => console.log(store.getState())}>Delete Workout</button>
+            <button onClick={() => props.delete(props.workout.id)}>Delete Workout</button>
           </div>
         </div>
       </div>
