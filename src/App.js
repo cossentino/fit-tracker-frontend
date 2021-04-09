@@ -4,13 +4,13 @@ import CreateWorkoutForm from './components/CreateWorkoutForm'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from './components/LoginForm'
 import React from 'react'
+import { connect } from 'react-redux'
 
-function App() {
-
+const App = (props) => {
   return (
     <Router>
       <div className="App">
-        <NavBar />
+        <NavBar loggedIn={props.loggedIn} />
         <Switch>
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/create" exact render={() => <CreateWorkoutForm />} />
@@ -21,5 +21,9 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return { loggedIn : state.loggedIn }
+}
+
+export default connect(mapStateToProps)(App);
 
