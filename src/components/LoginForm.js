@@ -44,7 +44,7 @@ class CreateWorkoutForm extends Component {
       .then(resp => resp.json())
       .then(json => {
         this.props.setUser({jwt: json.jwt, user_id: json.user.data.id })
-      })
+      }).then(() => this.props.history.push('/workouts'))
   }  
 
 

@@ -6,7 +6,7 @@ import Workout from './Workout'
 class Workouts extends Component {
 
   componentDidMount() {
-    this.props.fetchWorkouts()
+    this.props.fetchWorkouts(this.props.user.id)
   }
 
   render() {
@@ -25,13 +25,14 @@ class Workouts extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchWorkouts: () => dispatch(fetchWorkouts())
+    fetchWorkouts: (user_id) => dispatch(fetchWorkouts(user_id))
   }
 }
 
 const mapPropsToState = state => {
   return {
     workouts: state.workouts,
+    user: state.user
   }
 }
 

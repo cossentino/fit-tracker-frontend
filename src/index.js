@@ -6,9 +6,7 @@ import thunk from 'redux-thunk'
 import rootReducer from './reducers/rootReducer'
 import App from './App';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { Router } from 'react-router';
 
-// import reportWebVitals from './reportWebVitals';
 
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
