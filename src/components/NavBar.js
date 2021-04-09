@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { store } from '../index'
 
 const NavBar = props => {
@@ -12,8 +12,9 @@ const NavBar = props => {
           <li><Link to="/login">Log In</Link></li>
           <button className="btn" onClick={() => {
             localStorage.clear()
-            store.dispatch({type: 'LOG_OUT'})}}
-            >Log Out </button>
+            store.dispatch({type: 'LOG_OUT'})
+            }}
+            ><Link to="/login">Log Out</Link></button>
         </ul>
       </div>
     </nav>     
