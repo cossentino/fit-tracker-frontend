@@ -11,6 +11,16 @@ import { currentUser } from '../library'
 class WorkoutsContainer extends Component {
 
   currentUser = currentUser()
+
+  constructor() {
+    super()
+    this.state = {
+      filters: {
+        date: "all",
+        type: "run"
+      }
+    }
+  }
   
   componentDidMount() {
     if (this.currentUser) {
@@ -18,10 +28,24 @@ class WorkoutsContainer extends Component {
     }
   }
 
+  filterWorkouts(type, date) {
+    if (this.props.workouts) {
+      if (type !== "all") {
+        return this.props.workouts.filter(w => w.attributes.workout_type === type )
+      } else {
+        return this.props.workouts
+      }
+    } else { 
+      return null
+    }
+  }
+
   render() {
     return (
       <div>
-      { this.currentUser ? <div id="workouts"><Workouts workouts={this.props.workouts} delete={this.props.deleteWorkout}/></div> : <Redirect to="/login" /> }
+        { this.currentUser ? 
+          <div id="workouts"><Workouts workouts={this.filterWorkouts(this.state.filters.type, this.state.filters.date)} delete={this.props.deleteWorkout}/></div> 
+          : <Redirect to="/login" /> }
       </div>
     )}
 }
