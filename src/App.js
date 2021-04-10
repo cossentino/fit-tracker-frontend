@@ -1,10 +1,10 @@
 import NavBar from './components/NavBar'
 import WorkoutsContainer from './containers/WorkoutsContainer'
-import WorkoutChoice from './components/WorkoutChoice'
-import CreateWorkoutForm from './components/CreateWorkoutForm'
+import WorkoutChoice from './components/workouts/WorkoutChoice'
+import CreateWorkoutForm from './components/workouts/CreateWorkoutForm'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import LoginForm from './components/Sessions/LoginForm'
-import CreateUserForm from './components/Sessions/CreateUserForm'
+import LoginForm from './components/sessions/LoginForm'
+import CreateUserForm from './components/sessions/CreateUserForm'
 import React from 'react'
 import { connect } from 'react-redux'
 import Dashboard from './components/dashboard/Dashboard';

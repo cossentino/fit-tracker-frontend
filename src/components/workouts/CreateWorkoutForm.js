@@ -1,10 +1,7 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
-import { postConfObj, currentUser, capitalizeWord } from '../library'
+import { postConfObj, currentUser, capitalizeWord } from '../../library'
 import { withRouter, Redirect } from 'react-router-dom'
-
-
-
 
 
 class CreateWorkoutForm extends Component {

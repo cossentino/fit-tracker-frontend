@@ -1,10 +1,10 @@
 // import M from "materialize-css"
 import React from 'react'
-import { currentUser } from '../library'
+import { currentUser } from '../../library'
 import { Link, Redirect } from 'react-router-dom'
-import bike from '../images/bike.png'
-import run from '../images/run.png'
-import swim from '../images/swim.png'
+import bike from '../../images/bike.png'
+import run from '../../images/run.png'
+import swim from '../../images/swim.png'
 
 
 const WorkoutChoice = () => {

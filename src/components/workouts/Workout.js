@@ -1,5 +1,5 @@
 import React from 'react'
-import { formatDate, capitalizeWord } from '../library'
+import { formatDate, capitalizeWord } from '../../library'
 
 const Workout = props => {
 

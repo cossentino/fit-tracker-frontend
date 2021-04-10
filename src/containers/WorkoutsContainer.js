@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import fetchWorkouts from '../actions/fetchWorkouts'
 import deleteWorkout from '../actions/deleteWorkout'
-import Workouts from '../components/Workouts'
+import Workouts from '../components/workouts/Workouts'
 import { connect } from 'react-redux'
 import { currentUser } from '../library'
 
