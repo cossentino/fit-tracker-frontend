@@ -1,9 +1,11 @@
 export const formatDate = date => {
 // Edit bug where UTC time affects day
-  let d1 = date.split("-")
-  let d2 = d1.join(" ")
-  let dSplit = new Date(d2).toDateString().split(" ")
-  return `${dSplit[1]} ${dSplit[2]}, ${dSplit[3]}`
+  if (date) {
+    let d1 = date.split("-")
+    let d2 = d1.join(" ")
+    let dSplit = new Date(d2).toDateString().split(" ")
+    return `${dSplit[1]} ${dSplit[2]}, ${dSplit[3]}`
+  } else { return null }
 }
 
 export const capitalizeWord = word => {
