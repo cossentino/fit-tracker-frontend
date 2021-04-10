@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import setUser from '../actions/setUser'
-import { postConfObj } from '../library'
+import { postConfObj, setLocalStorage } from '../library'
 
 
 
@@ -30,13 +30,9 @@ class LoginForm extends Component {
       fetch('http://localhost:3000/api/v1/users/login', postConfObj(body))
       .then(resp => resp.json())
       .then(json => {
-        const userObj = {
-          token: json.jwt,
-          user_id: json.user.data.id
-        }
-        localStorage.setItem('user', JSON.stringify(userObj))
-        this.props.setUser(userObj)
-      }).then(() => this.props.history.push('/workouts'))
+        setLocalStorage(json)
+        this.props.history.push('/workouts')
+      })
   }  
 
 

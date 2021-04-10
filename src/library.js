@@ -33,7 +33,9 @@ export const postConfObj = body => {
 }
 
 export const currentUser = () => {
-  return JSON.parse(localStorage.getItem('user')).user_id
+  if (localStorage.getItem('user')) {
+    return JSON.parse(localStorage.getItem('user')).user_id
+  } else { return null }
 }
 
 export const setLocalStorage = json => {

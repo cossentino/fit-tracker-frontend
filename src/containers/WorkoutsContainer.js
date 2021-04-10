@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import fetchWorkouts from '../actions/fetchWorkouts'
 import deleteWorkout from '../actions/deleteWorkout'
 import Workouts from '../components/Workouts'
@@ -9,13 +10,20 @@ import { currentUser } from '../library'
 
 class WorkoutsContainer extends Component {
 
+  currentUser = currentUser()
+  
   componentDidMount() {
-    this.props.fetchWorkouts(currentUser())
+    if (currentUser()) {
+      this.props.fetchWorkouts(currentUser())
+    }
   }
 
   render() {
-    return <div id="workouts"><Workouts workouts={this.props.workouts} delete={this.props.deleteWorkout}/></div>
-  }
+    return (
+      <div>
+      { this.currentUser ? <div id="workouts"><Workouts workouts={this.props.workouts} delete={this.props.deleteWorkout}/></div> : <Redirect to="/login" /> }
+      </div>
+    )}
 }
 
 

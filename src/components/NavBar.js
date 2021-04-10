@@ -21,7 +21,8 @@ const NavBar = props => {
         <ul id="nav-mobile" className="right hide-on-med-and-down">
           <li><Link to="/workouts">Workouts</Link></li>
           <li><Link to="/workouts/create">Create Workout</Link></li>
-          {props.loggedIn ? logOutButton() : <li><Link to="/login">Log In</Link></li> }
+          {props.loggedIn ? logOutButton() : <li><Link to="/login">Log In</Link></li>}
+          {props.loggedIn ? null : <li><Link to="/signup">Sign Up</Link></li>}
         </ul>
       </div>
     </nav>     
