@@ -1,7 +1,8 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
 import { postConfObj, currentUser } from '../library'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
+
 
 
 
@@ -25,6 +26,8 @@ class CreateWorkoutForm extends Component {
     }
   }
 
+  currentUser = currentUser()
+
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
@@ -43,35 +46,42 @@ class CreateWorkoutForm extends Component {
 
   render() {
     return (
-      <div id="create_workout_form" className="container">
-        <h1>Create a New Workout</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>Date</label>
-          <input type="date" name="date" onChange={this.handleChange} value={this.state.date}/>
-          <label>Workout Type</label>
-          <select name="workout_type" onChange={this.handleChange} value={this.state.workout_type}>
-            <option value="run">Run</option>
-            <option value="swim">Swim</option>
-            <option value="bike">Bike</option>
-          </select>
-          <label>Miles</label>
-          <input onChange={this.handleChange} type="text" name="miles" value={this.state.miles} />
-          <label>Perceived Exertion (1-10) </label>
-          <input type="range" name="exert" min="1" max="10" onChange={this.handleChange} value={this.state.exert}/>
-          {this.state.exert}
-          <label>Pace</label>
-          <input type="time" name="pace" onChange={this.handleChange} value={this.state.pace}/>
-          <label>Notes</label>
-          <textarea name="notes" onChange={this.handleChange} value={this.state.notes}/>
-          <label>Location</label>
-          <input type="text" name="location" onChange={this.handleChange} value={this.state.location}/>
-          <input type="submit" value="submit" />
-        </form>
-        {this.state.workout_type}
+      <div>
+        {this.currentUser ? 
+          <div>
+            <h1>Create a New Workout</h1>
+            <form onSubmit={this.handleSubmit}>
+              <label>Date</label>
+              <input type="date" name="date" onChange={this.handleChange} value={this.state.date}/>
+              <label>Workout Type</label>
+              <select name="workout_type" onChange={this.handleChange} value={this.state.workout_type}>
+                <option value="run">Run</option>
+                <option value="swim">Swim</option>
+                <option value="bike">Bike</option>
+              </select>
+              <label>Miles</label>
+              <input onChange={this.handleChange} type="text" name="miles" value={this.state.miles} />
+              <label>Perceived Exertion (1-10) </label>
+              <input type="range" name="exert" min="1" max="10" onChange={this.handleChange} value={this.state.exert}/>
+              {this.state.exert}
+              <label>Pace</label>
+              <input type="time" name="pace" onChange={this.handleChange} value={this.state.pace}/>
+              <label>Notes</label>
+              <textarea name="notes" onChange={this.handleChange} value={this.state.notes}/>
+              <label>Location</label>
+              <input type="text" name="location" onChange={this.handleChange} value={this.state.location}/>
+              <input type="submit" value="submit" />
+            </form>
+          </div>  
+          : <Redirect to="/login" /> }
       </div>
-
-    )
+      )
   }
+
+
+    
+
+
 }
 
 

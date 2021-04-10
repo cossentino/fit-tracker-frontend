@@ -46,3 +46,9 @@ export const setLocalStorage = json => {
   localStorage.setItem('user', JSON.stringify(userInfo))
   store.dispatch({type: 'SET_USER', userInfo })
 }
+
+
+export const formatErrors = (errors) => {
+  const errorList = errors.map((e, ind) => `${ind + 1}. ${e}` )
+  return `Looks like you had some errors:\n\n ${errorList.join("\n")}`
+}
