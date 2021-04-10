@@ -7,6 +7,7 @@ import LoginForm from './components/Sessions/LoginForm'
 import CreateUserForm from './components/Sessions/CreateUserForm'
 import React from 'react'
 import { connect } from 'react-redux'
+import Dashboard from './components/dashboard/Dashboard';
 
 const App = (props) => {
 
@@ -15,6 +16,7 @@ const App = (props) => {
       <div className="App">
         <NavBar loggedIn={props.loggedIn} />
         <Switch>
+          <Route path="/" exact component={Dashboard} />
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/new" exact component={WorkoutChoice} />
           <Route path="/workouts/create/:type" exact render={() => <CreateWorkoutForm />} />
