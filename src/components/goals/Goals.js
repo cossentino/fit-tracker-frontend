@@ -1,5 +1,5 @@
 import React from 'react'
-import Goal from './Workout'
+import Goal from './Goal'
 import M from 'materialize-css'
 
 const Goals = props => {
@@ -9,7 +9,7 @@ const Goals = props => {
         <h1>My Goals</h1>
         <div className="row">
           {props.goals.map( g => {
-            return <Goal goal={g} key={g.id} delete={props.delete}  />
+            return <Goal goal={g} key={g.id} />
           })}
         </div>
       </div>

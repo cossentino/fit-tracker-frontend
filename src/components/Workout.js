@@ -7,17 +7,17 @@ const Workout = props => {
   
   return (
     <div>
-      <div class="col s4 m4" style={{display: 'inline'}}>
-        <div class="card horizontal">
-          <div class="card-stacked">
-            <div class="card-content">
+      <div className="col s4 m4" style={{display: 'inline'}}>
+        <div className="card horizontal">
+          <div className="card-stacked">
+            <div className="card-content">
                 <span className="card-title">{`${capitalizeWord(myWorkout.workout_type)} - ${formatDate(myWorkout.date)}`}</span>
                 <p>Miles: {myWorkout.miles}</p>
                 <p>Perceived Exertion: {myWorkout.exert}</p>
                 <p>Pace: {myWorkout.pace}</p>
                 <p>Notes: {myWorkout.notes}</p>
             </div>
-            <div class="card-action">
+            <div className="card-action">
               <button 
                 className="btn" 
                 onClick={() => {

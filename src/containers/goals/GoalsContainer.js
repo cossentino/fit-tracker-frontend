@@ -10,7 +10,7 @@ class GoalsContainer extends Component {
 
   componentDidMount() {
     if (this.currentUser) {
-      this.props.fetchWorkouts(this.currentUser)
+      this.props.fetchGoals(this.currentUser)
     }
   }
 

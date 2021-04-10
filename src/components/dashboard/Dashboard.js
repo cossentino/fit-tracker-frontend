@@ -8,8 +8,8 @@ class Dashboard extends Component {
     return(
     <div className="container" id="dashboard">
       <h3>My Dashboard</h3>
-      <div class="progress">
-          <div class="determinate" style={{width: '50%'}}></div>
+      <div className="progress">
+          <div className="determinate" style={{width: '50%'}}></div>
       </div>
     </div>)
   }
