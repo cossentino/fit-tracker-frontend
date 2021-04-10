@@ -1,5 +1,8 @@
 export const formatDate = date => {
-  const dSplit = new Date(date).toDateString().split(" ")
+// Edit bug where UTC time affects day
+  let d1 = date.split("-")
+  let d2 = d1.join(" ")
+  let dSplit = new Date(d2).toDateString().split(" ")
   return `${dSplit[1]} ${dSplit[2]}, ${dSplit[3]}`
 }
 
