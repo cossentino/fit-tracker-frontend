@@ -1,18 +1,15 @@
-import M from "materialize-css"
+// import M from "materialize-css"
 import React, { Component } from 'react'
 import { postConfObj, setLocalStorage } from '../library'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux' 
-import { store } from '../index'
+// import { store } from '../index'
 
 
 
 
 class CreateUserForm extends Component {
 
-  // componentDidMount() {
-  //   M.AutoInit()
-  // }
 
   constructor() {
     super()
@@ -31,6 +28,11 @@ class CreateUserForm extends Component {
     })
   }
 
+  formatErrors = (errors) => {
+    const errorList = errors.map((e, ind) => `${ind + 1}. ${e}` )
+    return `Looks like you had some errors:\n ${errorList.join("\n")}`
+  }
+
   handleSubmit = e => {
     e.preventDefault()
     const body = { user: {...this.state } }
@@ -41,7 +43,7 @@ class CreateUserForm extends Component {
         setLocalStorage(json)
         this.props.history.push('/workouts')
       } else {
-        alert(`${json.errors.join(". ")}`)
+        alert(this.formatErrors(json.errors))
       }
     })
   }
@@ -67,8 +69,4 @@ class CreateUserForm extends Component {
   }
 }
 
-
-
-
-
-export default withRouter(connect()(CreateUserForm))
+export default withRouter(CreateUserForm)

@@ -13,7 +13,7 @@ class WorkoutsContainer extends Component {
   currentUser = currentUser()
   
   componentDidMount() {
-    if (currentUser()) {
+    if (this.currentUser) {
       this.props.fetchWorkouts(currentUser())
     }
   }
