@@ -1,11 +1,13 @@
 const fetchWorkouts = (user_id) => {
-  return (dispatch) => {
-    fetch(`http://localhost:3000/api/v1/users/${user_id}/workouts`)
-    .then(resp => resp.json() )
-    .then(json => {
-        dispatch({ type: "ADD_WORKOUTS", workouts: json.data })
-    })
-  }
+  if (user_id) {
+    return (dispatch) => {
+      fetch(`http://localhost:3000/api/v1/users/${user_id}/workouts`)
+      .then(resp => resp.json() )
+      .then(json => {
+          dispatch({ type: "ADD_WORKOUTS", workouts: json.data })
+      })
+    }
+  } else { return dispatch => dispatch({type: "ADD_WORKOUTS", workouts: [] })}
 }
 
 export default fetchWorkouts

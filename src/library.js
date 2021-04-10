@@ -1,3 +1,6 @@
+import { store } from './index'
+
+
 export const formatDate = date => {
 // Edit bug where UTC time affects day
   if (date) {
@@ -31,4 +34,13 @@ export const postConfObj = body => {
 
 export const currentUser = () => {
   return JSON.parse(localStorage.getItem('user')).user_id
+}
+
+export const setLocalStorage = json => {
+  const userInfo = {
+    token: json.jwt,
+    user_id: json.user.data.id
+  }
+  localStorage.setItem('user', JSON.stringify(userInfo))
+  store.dispatch({type: 'SET_USER', userInfo })
 }

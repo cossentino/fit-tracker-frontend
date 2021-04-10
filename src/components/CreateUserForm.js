@@ -1,7 +1,9 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
-import { postConfObj } from '../library'
+import { postConfObj, setLocalStorage } from '../library'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux' 
+import { store } from '../index'
 
 
 
@@ -34,7 +36,14 @@ class CreateUserForm extends Component {
     const body = { user: {...this.state } }
     fetch(`http://localhost:3000/api/v1/users`, postConfObj(body))
     .then(resp => resp.json())
-    .then(json => console.log(json) )
+    .then(json => {
+      if (!json.errors) {
+        setLocalStorage(json)
+        this.props.history.push('/workouts')
+      } else {
+        alert(`${json.errors.join(". ")}`)
+      }
+    })
   }
 
 
@@ -62,4 +71,4 @@ class CreateUserForm extends Component {
 
 
 
-export default withRouter(CreateUserForm)
+export default withRouter(connect()(CreateUserForm))

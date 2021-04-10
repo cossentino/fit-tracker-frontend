@@ -37,7 +37,7 @@ class CreateWorkoutForm extends Component {
     const body = { ...this.state }
     fetch(`http://localhost:3000/api/v1/users/${currentUser()}/workouts`, postConfObj(body))
     .then(resp => resp.json())
-    .then(this.props.history.push('/workouts'))
+    .then(() => this.props.history.push('/workouts'))
   }
 
 
