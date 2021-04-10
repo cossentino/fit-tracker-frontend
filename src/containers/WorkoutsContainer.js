@@ -17,7 +17,7 @@ class WorkoutsContainer extends Component {
     this.state = {
       filters: {
         date: "all",
-        type: "run"
+        type: "all"
       }
     }
   }
@@ -28,23 +28,23 @@ class WorkoutsContainer extends Component {
     }
   }
 
-  filterWorkouts(type, date) {
-    if (this.props.workouts) {
-      if (type !== "all") {
-        return this.props.workouts.filter(w => w.attributes.workout_type === type )
-      } else {
-        return this.props.workouts
-      }
-    } else { 
-      return null
-    }
+  displayFilteredWorkouts = (type, date) => {
+    let workouts = this.props.workouts
+    if (type !== "all") {
+      workouts = workouts.filter(w => w.attributes.workout_type === type ) 
+    } else { return this.props.workouts }
+    return workouts
+  }
+
+  filter = (type, date) => {
+    this.setState({filters: {type: type, date: date}})
   }
 
   render() {
     return (
       <div>
         { this.currentUser ? 
-          <div id="workouts"><Workouts workouts={this.filterWorkouts(this.state.filters.type, this.state.filters.date)} delete={this.props.deleteWorkout}/></div> 
+          <div id="workouts"><Workouts workouts={this.displayFilteredWorkouts(this.state.filters.type, this.state.filters.date)} delete={this.props.deleteWorkout} filter={this.filter}/></div> 
           : <Redirect to="/login" /> }
       </div>
     )}
