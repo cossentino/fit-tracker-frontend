@@ -13,13 +13,13 @@ class CreateWorkoutForm extends Component {
     M.AutoInit()
   }
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       date: "",
-      workout_type: "run",
+      workout_type: this.props.match.params.type,
       miles: "",
-      exert: null,
+      exert: 0,
       pace: "",
       notes: "",
       location: "",
@@ -46,7 +46,7 @@ class CreateWorkoutForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         {this.currentUser ? 
           <div>
             <h1>Create a New Workout</h1>

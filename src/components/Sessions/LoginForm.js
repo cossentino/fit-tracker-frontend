@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import setUser from '../actions/setUser'
-import { postConfObj, setLocalStorage } from '../library'
+import setUser from '../../actions/setUser'
+import { postConfObj, setLocalStorage } from '../../library'
 
 
 
@@ -45,7 +45,7 @@ class LoginForm extends Component {
           <input type="text" name="username" onChange={this.handleChange}/>
           <label>Password</label>
           <input onChange={this.handleChange} type="password" name="password" />
-          <input type="submit" value="submit" />
+          <input className="btn" type="submit" value="submit" />
         </form>
       </div>
 

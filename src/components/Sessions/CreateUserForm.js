@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { postConfObj, setLocalStorage } from '../library'
+import { postConfObj, setLocalStorage } from '../../library'
 import { withRouter } from 'react-router-dom'
-import { formatErrors } from '../library'
+import { formatErrors } from '../../library'
 
 
 
