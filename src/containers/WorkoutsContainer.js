@@ -28,12 +28,10 @@ class WorkoutsContainer extends Component {
     }
   }
 
-  displayFilteredWorkouts = (type, date) => {
-    let workouts = this.props.workouts
+  displayFilteredWorkouts = (type) => {
     if (type !== "all") {
-      workouts = workouts.filter(w => w.attributes.workout_type === type ) 
+      return this.props.workouts.filter(w => w.attributes.workout_type === type ) 
     } else { return this.props.workouts }
-    return workouts
   }
 
   filter = (type, date) => {
@@ -44,13 +42,11 @@ class WorkoutsContainer extends Component {
     return (
       <div>
         { this.currentUser ? 
-          <div id="workouts"><Workouts workouts={this.displayFilteredWorkouts(this.state.filters.type, this.state.filters.date)} delete={this.props.deleteWorkout} filter={this.filter}/></div> 
+          <div id="workouts"><Workouts workouts={this.displayFilteredWorkouts(this.state.filters.type)} delete={this.props.deleteWorkout} filter={this.filter}/></div> 
           : <Redirect to="/login" /> }
       </div>
-    )}
+  )}
 }
-
-
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -60,9 +56,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const mapStateToProps = state => {
-  return {
-    workouts: state.workouts,
-  }
+  return { workouts: state.workouts }
 }
 
 

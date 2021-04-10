@@ -9,7 +9,7 @@ const Workouts = props => {
         <h1>My Workouts</h1>
         <h6>Filter by Sport: </h6>
         <select id="filter-select" 
-          onChange={() => props.filter(document.getElementById('filter-select').value, "all")}>
+          onChange={() => props.filter(document.getElementById('filter-select').value)}>
           <option value="all">All</option>
           <option value="run">Run</option>
           <option value="bike">Bike</option>
