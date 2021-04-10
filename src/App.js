@@ -8,6 +8,7 @@ import CreateUserForm from './components/Sessions/CreateUserForm'
 import React from 'react'
 import { connect } from 'react-redux'
 import Dashboard from './components/dashboard/Dashboard';
+import GoalsContainer from './containers/goals/GoalsContainer'
 
 const App = (props) => {
 
@@ -20,6 +21,7 @@ const App = (props) => {
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/new" exact component={WorkoutChoice} />
           <Route path="/workouts/create/:type" exact render={() => <CreateWorkoutForm />} />
+          <Route path="/goals" exact component={GoalsContainer} />
           <Route path="/login" exact component={LoginForm} />
           <Route path="/signup" exact component={CreateUserForm} />
         </Switch>

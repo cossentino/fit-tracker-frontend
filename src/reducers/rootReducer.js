@@ -2,6 +2,7 @@
 const initialState = 
   { 
     workouts: [],
+    goals: [],
     loggedIn: false
   }
 
@@ -10,7 +11,9 @@ const initialState =
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_WORKOUTS':
-      return {loggedIn: true , workouts: action.workouts }
+      return {...state, workouts: action.workouts }
+    case 'ADD_GOALS':
+      return {...state , goals: action.goals }
     case 'SET_USER':
       return { ...state, loggedIn: true }
     case 'DELETE_WORKOUT':
