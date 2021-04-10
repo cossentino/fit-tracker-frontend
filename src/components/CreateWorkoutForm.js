@@ -1,6 +1,6 @@
 import M from "materialize-css"
 import React, { Component } from 'react'
-import { postConfObj, currentUser } from '../library'
+import { postConfObj, currentUser, capitalizeWord } from '../library'
 import { withRouter, Redirect } from 'react-router-dom'
 
 
@@ -49,16 +49,12 @@ class CreateWorkoutForm extends Component {
       <div className="container">
         {this.currentUser ? 
           <div>
-            <h1>Create a New Workout</h1>
+            <h1>{`Log a New ${capitalizeWord(this.state.workout_type)}`}</h1>
             <form onSubmit={this.handleSubmit}>
               <label>Date</label>
               <input type="date" name="date" onChange={this.handleChange} value={this.state.date}/>
-              <label>Workout Type</label>
-              <select name="workout_type" onChange={this.handleChange} value={this.state.workout_type}>
-                <option value="run">Run</option>
-                <option value="swim">Swim</option>
-                <option value="bike">Bike</option>
-              </select>
+              <label>Location</label>
+              <input type="text" name="location" onChange={this.handleChange} value={this.state.location}/>
               <label>Miles</label>
               <input onChange={this.handleChange} type="text" name="miles" value={this.state.miles} />
               <label>Perceived Exertion (1-10) </label>
@@ -68,9 +64,7 @@ class CreateWorkoutForm extends Component {
               <input type="time" name="pace" onChange={this.handleChange} value={this.state.pace}/>
               <label>Notes</label>
               <textarea name="notes" onChange={this.handleChange} value={this.state.notes}/>
-              <label>Location</label>
-              <input type="text" name="location" onChange={this.handleChange} value={this.state.location}/>
-              <input type="submit" value="submit" />
+              <input type="submit" value="submit" className="btn" />
             </form>
           </div>  
           : <Redirect to="/login" /> }
