@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import M from 'materialize-css'
-import { currentUser, postConfObj, setLocalStorage, monthOptions } from '../../library'
-import { withRouter } from 'react-router-dom'
+import { currentUser, postConfObj, monthOptions } from '../../library'
+import { Redirect, withRouter } from 'react-router-dom'
 import { formatErrors } from '../../library'
 
 
 
 class CreateGoalForm extends Component {
 
+  currentUser = currentUser()
 
   constructor() {
     super()
@@ -50,20 +51,24 @@ class CreateGoalForm extends Component {
   render() {
     return (
       <div id="create_workout_form" className="container">
-        <h1>Sign up</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>Goal Description:</label>
-          <input type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
-          <label>Goal Sport:</label>
-          <input type="text" name="sport" onChange={this.handleChange} value={this.state.sport}/>
-          <label>Goal Miles: </label>
-          <input type="text" name="miles" onChange={this.handleChange} value={this.state.miles}/>
-          <label>Goal Month:</label>
-          <select name="month" onChange={this.handleChange} value={this.state.month}>
-            {monthOptions()}
-          </select>
-          <input className="btn" type="submit" value="submit" />
-        </form>
+        {this.currentUser ?
+        <div>
+          <h1>Sign up</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>Goal Description:</label>
+            <input type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
+            <label>Goal Sport:</label>
+            <input type="text" name="sport" onChange={this.handleChange} value={this.state.sport}/>
+            <label>Goal Miles: </label>
+            <input type="text" name="miles" onChange={this.handleChange} value={this.state.miles}/>
+            <label>Goal Month:</label>
+            <select name="month" onChange={this.handleChange} value={this.state.month}>
+              {monthOptions()}
+            </select>
+            <input className="btn" type="submit" value="submit" />
+          </form>
+        </div>
+        : <Redirect to="/login" />}
       </div>
 
     )
