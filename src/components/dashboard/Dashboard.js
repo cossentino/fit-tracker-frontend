@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { currentMonthWorkouts } from '../../library'
 import DashboardWorkouts from '../../components/dashboard/DashboardWorkouts'
-
+import ProgressBar from './ProgressBar'
+import { store } from '../../index'
 
 
 class Dashboard extends Component {
@@ -10,12 +11,11 @@ class Dashboard extends Component {
     return( 
       <div className="container" id="dashboard">
         <h3>My Dashboard</h3>
-        <h6>Workouts this month: </h6>
-        <DashboardWorkouts workouts={currentMonthWorkouts(this.props.workouts)} />
-        <h6>Progress towards this month's goal: </h6>
-        <div className="progress">
-            <div className="determinate" style={{width: '50%'}}></div>
+        <div>
+          <h6 style={{float: 'left'}}>Workouts this month: </h6>
+          <DashboardWorkouts workouts={currentMonthWorkouts(this.props.workouts)} />
         </div>
+        <ProgressBar goal={store.getState().goals[0]} />
       </div>
   )}
 }
