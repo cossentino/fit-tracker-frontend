@@ -3,21 +3,24 @@ import { connect } from 'react-redux'
 import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
+import { Redirect } from 'react-router-dom'
 
 class GoalsContainer extends Component {
 
-  currentUser = currentUser()
-
   componentDidMount() {
-    if (this.currentUser) {
-      this.props.fetchGoals(this.currentUser)
+    if (currentUser()) {
+      this.props.fetchGoals(currentUser())
     }
   }
 
   render(){
     return (
-      <div id="goals-container">
-        <Goals goals={this.props.goals} />
+      <div>
+        {currentUser() ? 
+        <div id="goals-container">
+          <Goals goals={this.props.goals} />
+        </div>
+        : <Redirect to="/login" />}
       </div>
     )
   }

@@ -8,8 +8,6 @@ import { formatErrors } from '../../library'
 
 class CreateGoalForm extends Component {
 
-  currentUser = currentUser()
-
   constructor() {
     super()
     this.state = {
@@ -31,8 +29,6 @@ class CreateGoalForm extends Component {
     })
   }
 
-
-
   handleSubmit = e => {
     e.preventDefault()
     const body = { goal: {...this.state } }
@@ -51,9 +47,9 @@ class CreateGoalForm extends Component {
   render() {
     return (
       <div id="create_workout_form" className="container">
-        {this.currentUser ?
+        {currentUser() ?
         <div>
-          <h1>Sign up</h1>
+          <h1>Create Goal</h1>
           <form onSubmit={this.handleSubmit}>
             <label>Goal Description:</label>
             <input type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
