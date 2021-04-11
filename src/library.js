@@ -1,5 +1,7 @@
 import { store } from './index'
 
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ]
+
 
 export const formatDate = date => {
   if (date) {
@@ -73,12 +75,25 @@ export const progress = (goal) => {
   return monthMiles ? `${( monthMiles / myGoal.miles ) * 100}%` : '0%'
 }
 
+
+
+
+
+
+
+
 export const monthOptions = () => {
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ]
   return months.map((m, idx) => <option value={sanitizeMonthIndex(idx)}>{m}</option>)
 }
 
-
 const sanitizeMonthIndex = idx => {
   return idx >= 9 ? (idx + 1).toString() : `0${idx + 1}`
+}
+
+export const currentMonthWorkouts = (workouts) => {
+  let currentMonth = new Date().getMonth()
+  if (workouts.length !== 0 ) {
+    return workouts.filter( w => w.attributes.date.slice(5,7) === sanitizeMonthIndex(currentMonth))
+  }
+  return null 
 }

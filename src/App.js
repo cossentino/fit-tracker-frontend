@@ -1,13 +1,13 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from './components/NavBar'
 import WorkoutsContainer from './containers/WorkoutsContainer'
 import WorkoutChoice from './components/workouts/WorkoutChoice'
 import CreateWorkoutForm from './components/workouts/CreateWorkoutForm'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoginForm from './components/sessions/LoginForm'
 import CreateUserForm from './components/sessions/CreateUserForm'
-import React from 'react'
-import { connect } from 'react-redux'
-import Dashboard from './components/dashboard/Dashboard';
+import DashboardContainer from './containers/DashboardContainer'
 import GoalsContainer from './containers/goals/GoalsContainer'
 import CreateGoalForm from './components/goals/CreateGoalForm';
 
@@ -18,7 +18,7 @@ const App = (props) => {
       <div className="App">
         <NavBar loggedIn={props.loggedIn} />
         <Switch>
-          <Route path="/" exact component={Dashboard} />
+          <Route path="/" exact component={DashboardContainer} />
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/new" exact component={WorkoutChoice} />
           <Route path="/workouts/create/:type" exact render={() => <CreateWorkoutForm />} />

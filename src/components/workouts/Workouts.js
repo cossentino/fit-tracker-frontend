@@ -1,7 +1,6 @@
 import React from 'react'
 import Workout from './Workout'
 import M from 'materialize-css'
-import { filterMilesByMonth } from '../../library'
 
 const Workouts = props => {
     M.AutoInit()
