@@ -2,7 +2,6 @@ import { store } from './index'
 
 
 export const formatDate = date => {
-// Edit bug where UTC time affects day
   if (date) {
     let d1 = date.split("-")
     let d2 = d1.join(" ")
@@ -51,4 +50,19 @@ export const setLocalStorage = json => {
 export const formatErrors = (errors) => {
   const errorList = errors.map((e, ind) => `${ind + 1}. ${e}` )
   return `Looks like you had some errors:\n\n ${errorList.join("\n")}`
+}
+
+
+export const filterMilesByMonth = (workouts, sport, filterMonth) => {
+  if (workouts.length !== 0 ) {
+    const mySportWorkouts = workouts.filter( w => {
+      return w.attributes.workout_type === sport 
+      && w.attributes.date.slice(5,7) === filterMonth
+    })
+    if (mySportWorkouts.length !== 0) {
+      const reducer = (a, c) => a + c.attributes.miles
+      return mySportWorkouts.reduce(reducer, 0 )
+    }
+  }
+  return null 
 }

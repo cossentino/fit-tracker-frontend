@@ -5,6 +5,7 @@ const Workout = props => {
 
   const myWorkout = props.workout.attributes
   
+  
   return (
     <div>
       <div className="col s4 m4" style={{display: 'inline'}}>
