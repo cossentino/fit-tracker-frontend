@@ -72,3 +72,13 @@ export const progress = (goal) => {
   const monthMiles = filterMilesByMonthAndSport(store.getState().workouts, myGoal.sport, myGoal.month)
   return monthMiles ? `${( monthMiles / myGoal.miles ) * 100}%` : '0%'
 }
+
+export const monthOptions = () => {
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', ]
+  return months.map((m, idx) => <option value={sanitizeMonthIndex(idx)}>{m}</option>)
+}
+
+
+const sanitizeMonthIndex = idx => {
+  return idx >= 9 ? (idx + 1).toString() : `0${idx + 1}`
+}

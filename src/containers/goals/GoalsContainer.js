@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
-import filterMilesByMonth from '../../library'
 
 class GoalsContainer extends Component {
 

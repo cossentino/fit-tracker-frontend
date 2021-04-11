@@ -9,6 +9,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Dashboard from './components/dashboard/Dashboard';
 import GoalsContainer from './containers/goals/GoalsContainer'
+import CreateGoalForm from './components/goals/CreateGoalForm';
 
 const App = (props) => {
 
@@ -22,6 +23,7 @@ const App = (props) => {
           <Route path="/workouts/new" exact component={WorkoutChoice} />
           <Route path="/workouts/create/:type" exact render={() => <CreateWorkoutForm />} />
           <Route path="/goals" exact component={GoalsContainer} />
+          <Route path="/goals/create" exact component={CreateGoalForm} />
           <Route path="/login" exact component={LoginForm} />
           <Route path="/signup" exact component={CreateUserForm} />
         </Switch>
