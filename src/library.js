@@ -53,7 +53,7 @@ export const formatErrors = (errors) => {
 }
 
 
-export const filterMilesByMonth = (workouts, sport, filterMonth) => {
+export const filterMilesByMonthAndSport = (workouts, sport, filterMonth) => {
   if (workouts.length !== 0 ) {
     const mySportWorkouts = workouts.filter( w => {
       return w.attributes.workout_type === sport 
@@ -65,4 +65,10 @@ export const filterMilesByMonth = (workouts, sport, filterMonth) => {
     }
   }
   return null 
+}
+
+export const progress = (goal) => {
+  const myGoal = goal.attributes
+  const monthMiles = filterMilesByMonthAndSport(store.getState().workouts, myGoal.sport, myGoal.month)
+  return monthMiles ? `${( monthMiles / myGoal.miles ) * 100}%` : '0%'
 }

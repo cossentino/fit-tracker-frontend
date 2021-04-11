@@ -1,5 +1,5 @@
 import React from 'react'
-import {capitalizeWord, filterMilesByMonth } from '../../library'
+import {capitalizeWord, progress } from '../../library'
 
 const Workout = props => {
 
@@ -16,7 +16,7 @@ const Workout = props => {
                 <p>Sport: {capitalizeWord(myGoal.sport)}</p>
                 <p>Mileage Goal: {myGoal.miles}</p>
                 <p>Month: {myGoal.month}</p>
-                <p>Progress: </p>
+                <p>Progress: { progress(props.goal)} </p>
             </div>
             <div className="card-action">
             </div>

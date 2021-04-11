@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
+import filterMilesByMonth from '../../library'
 
 class GoalsContainer extends Component {
 
@@ -24,7 +25,8 @@ class GoalsContainer extends Component {
 }
 
 const mapStateToProps = state => {
-  return { goals: state.goals }
+  return { goals: state.goals,
+          workouts: state.workouts }
 }
 
 const mapDispatchToProps = dispatch => {
