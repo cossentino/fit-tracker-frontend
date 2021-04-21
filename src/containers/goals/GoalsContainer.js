@@ -4,19 +4,20 @@ import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
 import { Redirect } from 'react-router-dom'
+import deleteGoal from '../../actions/fetchGoals'
 
 
 const GoalsContainer = props => {
 
-  React.useEffect(() => {
-    return currentUser() ? props.fetchGoals(currentUser()) : null
-  })
-
+  // React.useEffect(() => {
+  //   return currentUser() ? props.fetchGoals(currentUser()) : null
+  // })
+  
     return (
       <div>
         {currentUser() ? 
         <div id="goals-container">
-          <Goals goals={props.goals} />
+          <Goals goals={props.goals} delete={props.deleteGoal}/>
         </div>
         : <Redirect to="/login" />}
       </div>
@@ -31,6 +32,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchGoals: (user_id) => dispatch(fetchGoals(user_id)),
+    deleteGoal: (goal_id) => dispatch(deleteGoal(goal_id))
   }
 }
 

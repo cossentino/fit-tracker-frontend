@@ -1,10 +1,9 @@
 import React from 'react'
 import {capitalizeWord, progressPercentage } from '../../library'
 
-const Workout = props => {
+const Goal = props => {
 
   const myGoal = props.goal.attributes
-  
   
   return (
     <div>
@@ -33,4 +32,4 @@ const Workout = props => {
   )
 }
 
-export default Workout
+export default Goal

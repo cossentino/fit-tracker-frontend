@@ -9,7 +9,7 @@ const Goals = props => {
         <h1>My Goals</h1>
         <div className="row">
           {props.goals.map( g => {
-            return <Goal goal={g} key={g.id} />
+            return <Goal goal={g} key={g.id} delete={props.delete}/>
           })}
         </div>
       </div>
