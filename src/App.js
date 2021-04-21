@@ -31,7 +31,7 @@ const App = props => {
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/new" exact component={WorkoutChoice} />
           <Route path="/workouts/create/:type" exact render={() => <CreateWorkoutForm />} />
-          <Route path="/goals" exact render = {routerProps => <GoalsContainer {...routerProps} />} />
+          <Route path="/goals" exact render={routerProps => <GoalsContainer {...routerProps} />} />
           <Route path="/goals/create" exact component={CreateGoalForm} />
           <Route path="/login" exact component={LoginForm} />
           <Route path="/signup" exact component={CreateUserForm} />
