@@ -8,14 +8,15 @@ const Workout = props => {
   
   return (
     <div>
-      <div className="col s4 m4" style={{display: 'inline'}}>
+      <div className="col s5 m5" style={{display: 'inline'}}>
         <div className="card horizontal">
           <div className="card-stacked">
             <div className="card-content">
                 <span className="card-title">{`${capitalizeWord(myWorkout.workout_type)} - ${formatDate(myWorkout.date)}`}</span>
                 <p>Miles: {myWorkout.miles}</p>
                 <p>Perceived Exertion: {myWorkout.exert}</p>
-                <p>Pace: {myWorkout.pace}</p>
+                <p>Pace: 8:00</p>
+                <p>Location: {myWorkout.location}</p>
                 <p>Notes: {myWorkout.notes}</p>
             </div>
             <div className="card-action">

@@ -69,17 +69,16 @@ export const filterMilesByMonthAndSport = (workouts, sport, filterMonth) => {
   return null 
 }
 
-export const progress = (goal) => {
+export const progressPercentage = (goal) => {
   const myGoal = goal.attributes
   const monthMiles = filterMilesByMonthAndSport(store.getState().workouts, myGoal.sport, myGoal.month)
   return monthMiles ? `${( monthMiles / myGoal.miles ) * 100}%` : '0%'
 }
 
-
-
-
-
-
+export const currentMonthMilesBySport = (goal) => {
+  const myGoal = goal.attributes
+  return filterMilesByMonthAndSport(store.getState().workouts, myGoal.sport, myGoal.month)
+}
 
 
 export const monthOptions = () => {

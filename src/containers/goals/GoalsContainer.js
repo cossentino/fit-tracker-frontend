@@ -1,29 +1,26 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
 import { Redirect } from 'react-router-dom'
 
-class GoalsContainer extends Component {
 
-  componentDidMount() {
-    if (currentUser()) {
-      this.props.fetchGoals(currentUser())
-    }
-  }
+const GoalsContainer = props => {
 
-  render(){
+  React.useEffect(() => {
+    return currentUser() ? props.fetchGoals(currentUser()) : null
+  })
+
     return (
       <div>
         {currentUser() ? 
         <div id="goals-container">
-          <Goals goals={this.props.goals} />
+          <Goals goals={props.goals} />
         </div>
         : <Redirect to="/login" />}
       </div>
     )
-  }
 }
 
 const mapStateToProps = state => {
@@ -36,6 +33,5 @@ const mapDispatchToProps = dispatch => {
     fetchGoals: (user_id) => dispatch(fetchGoals(user_id)),
   }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoalsContainer)
