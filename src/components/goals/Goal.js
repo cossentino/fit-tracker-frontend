@@ -19,6 +19,12 @@ const Workout = props => {
                 <p>Progress: { progressPercentage(props.goal)} </p>
             </div>
             <div className="card-action">
+              <button 
+                  className="btn" 
+                  onClick={() => {
+                    props.delete(props.goal.id)
+                  }}
+                >Delete Goal</button>              
             </div>
           </div>
         </div>

@@ -18,6 +18,8 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, loggedIn: true }
     case 'DELETE_WORKOUT':
       return { ...state, workouts: state.workouts.filter( w => w.id !== action.id )}
+      case 'DELETE_GOAL':
+        return { ...state, goals: state.goals.filter( g => g.id !== action.id )}
     case 'LOG_OUT':
       return initialState
     default:
