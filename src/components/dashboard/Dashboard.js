@@ -11,13 +11,13 @@ class Dashboard extends Component {
     return( 
       <div className="container" id="dashboard">
         <h3>My Dashboard</h3>
+        <ProgressBar goal={store.getState().goals[0]} />
         <div>
           <div className="row">
             <h6 style={{float: 'left'}}>Workouts this month: </h6>
           </div>
           <DashboardWorkouts workouts={currentMonthWorkouts(this.props.workouts)} delete={this.props.delete} />
         </div>
-        <ProgressBar goal={store.getState().goals[0]} />
       </div>
   )}
 }
