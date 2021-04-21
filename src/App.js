@@ -10,8 +10,17 @@ import CreateUserForm from './components/sessions/CreateUserForm'
 import DashboardContainer from './containers/DashboardContainer'
 import GoalsContainer from './containers/goals/GoalsContainer'
 import CreateGoalForm from './components/goals/CreateGoalForm';
+import fetchWorkouts from './actions/fetchWorkouts'
+import fetchGoals from './actions/fetchGoals'
+import { store } from '.';
+import { currentUser } from './library'
 
-const App = (props) => {
+const App = props => {
+
+  React.useEffect(() => {
+    store.dispatch(fetchGoals(currentUser()))
+    store.dispatch(fetchWorkouts(currentUser()))
+  })
 
   return (
     <Router>
@@ -22,7 +31,7 @@ const App = (props) => {
           <Route path="/workouts" exact component={WorkoutsContainer} />
           <Route path="/workouts/new" exact component={WorkoutChoice} />
           <Route path="/workouts/create/:type" exact render={() => <CreateWorkoutForm />} />
-          <Route path="/goals" exact component={GoalsContainer} />
+          <Route path="/goals" exact render = {routerProps => <GoalsContainer {...routerProps} />} />
           <Route path="/goals/create" exact component={CreateGoalForm} />
           <Route path="/login" exact component={LoginForm} />
           <Route path="/signup" exact component={CreateUserForm} />

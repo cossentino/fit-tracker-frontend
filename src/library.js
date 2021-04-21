@@ -76,12 +76,6 @@ export const progress = (goal) => {
 }
 
 
-
-
-
-
-
-
 export const monthOptions = () => {
   return months.map((m, idx) => <option value={sanitizeMonthIndex(idx)}>{m}</option>)
 }

@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
-import { Redirect } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
+import CreateGoalForm from './components/goals/CreateGoalForm';
+
 
 class GoalsContainer extends Component {
 
@@ -21,6 +23,7 @@ class GoalsContainer extends Component {
           <Goals goals={this.props.goals} />
         </div>
         : <Redirect to="/login" />}
+        <Route path={`${this.props.match.url}/create`} exact component={CreateGoalForm} />
       </div>
     )
   }
