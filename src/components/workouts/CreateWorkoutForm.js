@@ -8,6 +8,10 @@ class CreateWorkoutForm extends Component {
 
   componentDidMount() {
     M.AutoInit()
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.timepicker');
+      var instances = M.Timepicker.init(elems, {twelveHour: false});
+    });
   }
 
   constructor(props) {
@@ -27,6 +31,7 @@ class CreateWorkoutForm extends Component {
 
   handleChange = e => {
     const { name, value } = e.target
+    console.log(value)
     this.setState({
       [name]: value
     })
@@ -34,6 +39,7 @@ class CreateWorkoutForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
+    console.log(typeof this.state.pace)
     const body = { ...this.state }
     fetch(`http://localhost:3000/api/v1/users/${currentUser()}/workouts`, postConfObj(body))
     .then(resp => resp.json())
@@ -58,7 +64,7 @@ class CreateWorkoutForm extends Component {
               <input type="range" name="exert" min="1" max="10" onChange={this.handleChange} value={this.state.exert}/>
               {this.state.exert}
               <label>Pace</label>
-              <input type="time" name="pace" onChange={this.handleChange} value={this.state.pace}/>
+              <input type="text" className="timepicker" name="pace" onSelect={this.handleChange} onChange={this.handleChange} value={this.state.pace} />
               <label>Notes</label>
               <textarea name="notes" onChange={this.handleChange} value={this.state.notes}/>
               <input type="submit" value="submit" className="btn" />
