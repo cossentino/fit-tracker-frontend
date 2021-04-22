@@ -18,7 +18,7 @@ import { currentUser } from './library'
 const App = props => {
 
   React.useEffect(() => {
-    store.dispatch(fetchGoals(currentUser()))
+    // store.dispatch(fetchGoals(currentUser()))
     store.dispatch(fetchWorkouts(currentUser()))
   })
 

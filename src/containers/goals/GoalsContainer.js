@@ -1,27 +1,32 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Goals from '../../components/goals/Goals'
 import { currentUser } from '../../library'
 import fetchGoals from '../../actions/fetchGoals'
 import { Redirect } from 'react-router-dom'
-import deleteGoal from '../../actions/fetchGoals'
+import deleteGoal from '../../actions/deleteGoal'
 
 
-const GoalsContainer = props => {
+class GoalsContainer extends Component {
 
-  // React.useEffect(() => {
-  //   return currentUser() ? props.fetchGoals(currentUser()) : null
-  // })
-  
-    return (
-      <div>
-        {currentUser() ? 
-        <div id="goals-container">
-          <Goals goals={props.goals} delete={props.deleteGoal}/>
+    componentDidMount() {
+      if (currentUser()) {
+        this.props.fetchGoals(currentUser())
+      }
+    }
+
+    render() {
+
+      return (
+        <div>
+          {currentUser() ? 
+          <div id="goals-container">
+            <Goals goals={this.props.goals} delete={this.props.deleteGoal}/>
+          </div>
+          : <Redirect to="/login" />}
         </div>
-        : <Redirect to="/login" />}
-      </div>
-    )
+      )
+    }
 }
 
 const mapStateToProps = state => {

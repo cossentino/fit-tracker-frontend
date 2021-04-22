@@ -10,7 +10,7 @@ const ProgressBar = props => {
       <div>
         <div id="goal_information" >
           <h5 style={{marginTop: '50px', display: 'inline-block' }}>This month's goal: {props.goal.attributes.description} </h5>
-          <div class="container">
+          <div className="container">
             <p>Goal mileage: {props.goal.attributes.miles}</p>
             <p>Mileage This Month: {currentMonthMilesBySport(props.goal)}</p>
           </div>

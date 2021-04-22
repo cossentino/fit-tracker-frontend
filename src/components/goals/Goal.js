@@ -4,7 +4,6 @@ import {capitalizeWord, progressPercentage } from '../../library'
 const Goal = props => {
 
   const myGoal = props.goal.attributes
-  
   return (
     <div>
       <div className="col s4 m4" style={{display: 'inline'}}>
@@ -20,9 +19,8 @@ const Goal = props => {
             <div className="card-action">
               <button 
                   className="btn" 
-                  onClick={() => {
-                    props.delete(props.goal.id)
-                  }}
+                  onClick={() => props.delete(props.goal.id)
+                  }
                 >Delete Goal</button>              
             </div>
           </div>
