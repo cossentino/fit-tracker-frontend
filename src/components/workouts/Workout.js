@@ -15,7 +15,7 @@ const Workout = props => {
                 <span className="card-title">{`${capitalizeWord(myWorkout.workout_type)} - ${formatDate(myWorkout.date)}`}</span>
                 <p>Miles: {myWorkout.miles}</p>
                 <p>Perceived Exertion: {myWorkout.exert}</p>
-                <p>Pace: 8:00</p>
+                <p>Pace: {myWorkout.pace}</p>
                 <p>Location: {myWorkout.location}</p>
                 <p>Notes: {myWorkout.notes}</p>
             </div>
