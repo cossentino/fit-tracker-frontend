@@ -10,8 +10,6 @@ import { currentUser } from '../library'
 
 class WorkoutsContainer extends Component {
 
-  currentUser = currentUser()
-
   constructor() {
     super()
     this.state = {
@@ -23,7 +21,7 @@ class WorkoutsContainer extends Component {
   }
   
   componentDidMount() {
-    if (this.currentUser) {
+    if (currentUser()) {
       this.props.fetchWorkouts(currentUser())
     }
   }
@@ -41,7 +39,7 @@ class WorkoutsContainer extends Component {
   render() {
     return (
       <div>
-        { this.currentUser ? 
+        { currentUser() ? 
           <div id="workouts"><Workouts workouts={this.displayFilteredWorkouts(this.state.filters.type)} delete={this.props.deleteWorkout} filter={this.filter}/></div> 
           : <Redirect to="/login" /> }
       </div>

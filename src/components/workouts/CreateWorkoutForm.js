@@ -7,7 +7,6 @@ import { withRouter, Redirect } from 'react-router-dom'
 class CreateWorkoutForm extends Component {
 
   componentDidMount() {
-    // M.AutoInit()
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.timepicker');
       var instances = M.Timepicker.init(elems, { twelveHour: false });
@@ -31,7 +30,6 @@ class CreateWorkoutForm extends Component {
 
   handleChange = e => {
     const { name, value } = e.target
-    console.log(value)
     this.setState({
       [name]: value
     })
@@ -39,7 +37,6 @@ class CreateWorkoutForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(typeof this.state.pace)
     const body = { ...this.state }
     fetch(`http://localhost:3000/api/v1/users/${currentUser()}/workouts`, postConfObj(body))
     .then(resp => resp.json())
