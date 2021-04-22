@@ -1,9 +1,9 @@
 import {getConfObj} from '../library'
 
 
-const fetchGoals = (user_id) => {
+const fetchGoals = user_id => {
   if (user_id) {
-    return (dispatch) => {
+    return dispatch => {
       fetch(`http://localhost:3000/api/v1/users/${user_id}/goals`, getConfObj())
       .then(resp => resp.json() )
       .then(json => {

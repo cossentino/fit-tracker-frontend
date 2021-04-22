@@ -11,7 +11,6 @@ import DashboardContainer from './containers/DashboardContainer'
 import GoalsContainer from './containers/goals/GoalsContainer'
 import CreateGoalForm from './components/goals/CreateGoalForm';
 import fetchWorkouts from './actions/fetchWorkouts'
-import fetchGoals from './actions/fetchGoals'
 import { store } from '.';
 import { currentUser } from './library'
 

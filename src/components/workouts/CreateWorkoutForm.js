@@ -7,10 +7,10 @@ import { withRouter, Redirect } from 'react-router-dom'
 class CreateWorkoutForm extends Component {
 
   componentDidMount() {
-    M.AutoInit()
+    // M.AutoInit()
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.timepicker');
-      var instances = M.Timepicker.init(elems, {twelveHour: false});
+      var instances = M.Timepicker.init(elems, { twelveHour: false });
     });
   }
 
@@ -61,8 +61,9 @@ class CreateWorkoutForm extends Component {
               <label>Miles</label>
               <input onChange={this.handleChange} type="text" name="miles" value={this.state.miles} />
               <label>Perceived Exertion (1-10) </label>
-              <input type="range" name="exert" min="1" max="10" onChange={this.handleChange} value={this.state.exert}/>
-              {this.state.exert}
+              <div className="row">
+                <input type="range" name="exert" min="1" max="10" onChange={this.handleChange} value={this.state.exert}/> <span style={{float:"right", fontSize:"18px"}}>{this.state.exert}</span>
+              </div>
               <label>Pace</label>
               <input type="text" className="timepicker" name="pace" onSelect={this.handleChange} value={this.state.pace} />
               <label>Notes</label>

@@ -1,7 +1,7 @@
 
 
-const setUser = (userInfo) => {
-  return (dispatch) => {
+const setUser = userInfo => {
+  return dispatch => {
     dispatch({ type: "SET_USER", userInfo })
   }
 }
