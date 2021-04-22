@@ -34,6 +34,20 @@ export const postConfObj = body => {
   }
 }
 
+export const getConfObj = () => {
+  return { method: 'get', 
+      headers: 
+        { 'Authorization': authorizationHeader() } 
+    }
+}
+
+export const deleteConfObj = () => {
+    return { method: 'DELETE', 
+        headers: 
+          { 'Authorization': authorizationHeader() } 
+      }
+}
+
 export const authorizationHeader = () => {
   if ( localStorage.getItem('user') !== null ) {
     const token = JSON.parse(localStorage.getItem('user')).token
