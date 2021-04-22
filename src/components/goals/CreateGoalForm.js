@@ -21,7 +21,7 @@ class CreateGoalForm extends Component {
   componentDidMount() {
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('select');
-      var instances = M.FormSelect.init(elems);
+      M.FormSelect.init(elems);
     });
     M.AutoInit()
   }
@@ -59,7 +59,6 @@ class CreateGoalForm extends Component {
             <input type="text" name="description" onChange={this.handleChange} value={this.state.description}/>
             <div className="row">
             <label>Goal Sport:</label>
-              {/* <input type="text" name="sport" onChange={this.handleChange} value={this.state.sport}/> */}
               <select name="sport" onChange={this.handleChange} value={this.state.sport}>
                 <option value="run">Run</option>
                 <option value="bike">Bike</option>

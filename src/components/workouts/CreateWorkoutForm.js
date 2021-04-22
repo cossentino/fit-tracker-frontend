@@ -9,7 +9,7 @@ class CreateWorkoutForm extends Component {
   componentDidMount() {
     document.addEventListener('DOMContentLoaded', function() {
       var elems = document.querySelectorAll('.timepicker');
-      var instances = M.Timepicker.init(elems, { twelveHour: false });
+      M.Timepicker.init(elems, { twelveHour: false });
     });
   }
 
@@ -72,15 +72,6 @@ class CreateWorkoutForm extends Component {
       </div>
       )
   }
-
-
-    
-
-
 }
-
-
-
-
 
 export default withRouter(CreateWorkoutForm)
