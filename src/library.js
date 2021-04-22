@@ -27,10 +27,20 @@ export const postConfObj = body => {
     method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Accept": "application/json",
+        "Authorization": authorizationHeader()
       },
       body: JSON.stringify(body)
   }
+}
+
+export const authorizationHeader = () => {
+  if ( localStorage.getItem('user') !== null ) {
+    const token = JSON.parse(localStorage.getItem('user')).token
+    return `Bearer ${token}`
+  } else { 
+    return null
+  } 
 }
 
 export const currentUser = () => {
@@ -72,7 +82,7 @@ export const filterMilesByMonthAndSport = (workouts, sport, filterMonth) => {
 export const progressPercentage = (goal) => {
   const myGoal = goal.attributes
   const monthMiles = filterMilesByMonthAndSport(store.getState().workouts, myGoal.sport, myGoal.month)
-  return monthMiles ? `${( monthMiles / myGoal.miles ) * 100}%` : '0%'
+  return monthMiles ? `${(( monthMiles / myGoal.miles ) * 100).toFixed(0)}%` : '0%'
 }
 
 export const currentMonthMilesBySport = (goal) => {
