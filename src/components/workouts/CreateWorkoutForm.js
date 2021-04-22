@@ -64,7 +64,7 @@ class CreateWorkoutForm extends Component {
               <input type="range" name="exert" min="1" max="10" onChange={this.handleChange} value={this.state.exert}/>
               {this.state.exert}
               <label>Pace</label>
-              <input type="text" className="timepicker" name="pace" onSelect={this.handleChange} onChange={this.handleChange} value={this.state.pace} />
+              <input type="text" className="timepicker" name="pace" onSelect={this.handleChange} value={this.state.pace} />
               <label>Notes</label>
               <textarea name="notes" onChange={this.handleChange} value={this.state.notes}/>
               <input type="submit" value="submit" className="btn" />
