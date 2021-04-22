@@ -1,5 +1,5 @@
 import React from 'react'
-import {capitalizeWord, progressPercentage } from '../../library'
+import {capitalizeWord, progressPercentage, numericMonthToString } from '../../library'
 
 const Goal = props => {
 
@@ -11,9 +11,9 @@ const Goal = props => {
           <div className="card-stacked">
             <div className="card-content">
                 <span className="card-title">{`${myGoal.description}`}</span>
+                <span>Month: {numericMonthToString(myGoal.month)}</span>
                 <p>Sport: {capitalizeWord(myGoal.sport)}</p>
-                <p>Mileage Goal: {myGoal.miles}</p>
-                <p>Month: {myGoal.month}</p>
+                <p>Mileage: {myGoal.miles}</p>
                 <p>Progress: { progressPercentage(props.goal)} </p>
             </div>
             <div className="card-action">

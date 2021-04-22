@@ -96,3 +96,12 @@ export const currentMonthWorkouts = (workouts) => {
   }
   return null 
 }
+
+
+export const numericMonthToString = (numStr) => {
+  if (numStr[0] === "0") {
+    return months[parseInt(numStr[1]) - 1]
+  } else {
+    return months[parseInt(numStr) - 1]
+  }
+}
