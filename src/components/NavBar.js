@@ -1,9 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { store } from '../index'
 import { currentUser } from '../library'
 
+
 const NavBar = props => {
+  const history = useHistory();
+
+  function returnToLogin() {
+    history.push("/login");
+  }
+
 
   const logOutButton = () => {
     return (
@@ -11,6 +18,7 @@ const NavBar = props => {
       onClick={() => {
       localStorage.clear()
       store.dispatch({type: 'LOG_OUT'})
+      returnToLogin()
       }}>
         <Link to="/login">Log Out</Link>
       </button>
