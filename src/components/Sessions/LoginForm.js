@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import setUser from '../../actions/setUser'
+// import { connect } from 'react-redux'
+// import setUser from '../../actions/setUser'
 import { postConfObj, setLocalStorage } from '../../library'
 
 
@@ -53,11 +53,13 @@ class LoginForm extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setUser: userInfo => dispatch(setUser(userInfo))
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     // setUser: userInfo => dispatch(setUser(userInfo))
+//     setUser: null
+//   }
+// }
 
 
-export default connect(null, mapDispatchToProps)(LoginForm)
+// export default connect(null, mapDispatchToProps)(LoginForm)
+export default LoginForm
