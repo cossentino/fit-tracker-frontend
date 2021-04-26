@@ -31,7 +31,7 @@ class LoginForm extends Component {
       .then(resp => resp.json())
       .then(json => {
         setLocalStorage(json)
-        this.props.history.push('/workouts')
+        this.props.history.push('/')
       })
   }  
 
