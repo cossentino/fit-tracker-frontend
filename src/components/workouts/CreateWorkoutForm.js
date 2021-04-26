@@ -25,8 +25,6 @@ class CreateWorkoutForm extends Component {
     }
   }
 
-  currentUser = currentUser()
-
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
@@ -42,11 +40,10 @@ class CreateWorkoutForm extends Component {
     .then(() => this.props.history.push('/workouts'))
   }
 
-
   render() {
     return (
       <div className="container">
-        {this.currentUser ? 
+        {currentUser() ? 
           <div>
             <h1>{`Log a New ${capitalizeWord(this.state.workout_type)}`}</h1>
             <form onSubmit={this.handleSubmit}>
