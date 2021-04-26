@@ -7,10 +7,9 @@ import { withRouter, Redirect } from 'react-router-dom'
 class CreateWorkoutForm extends Component {
 
   componentDidMount() {
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.timepicker');
-      M.Timepicker.init(elems, { twelveHour: false });
-    });
+    M.AutoInit()
+    var elems = document.querySelectorAll('.timepicker');
+    M.Timepicker.init(elems, { twelveHour: false });
   }
 
   constructor(props) {
