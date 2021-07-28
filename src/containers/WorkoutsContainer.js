@@ -15,35 +15,45 @@ class WorkoutsContainer extends Component {
     this.state = {
       filters: {
         date: "all",
-        type: "all"
+        type: "all",
       }
     }
   }
-  
+
+  // a c b d
+
   componentDidMount() {
     if (currentUser()) {
+      console.log('a')
       this.props.fetchWorkouts(currentUser())
+      console.log('b')
     }
   }
 
   displayFilteredWorkouts = (type) => {
     if (type !== "all") {
-      return this.props.workouts.filter(w => w.attributes.workout_type === type ) 
+      return this.props.workouts.filter(w => w.attributes.workout_type === type)
     } else { return this.props.workouts }
   }
 
   filter = (type, date) => {
-    this.setState({filters: {type: type, date: date}})
+    this.setState({ filters: { type: type, date: date } })
   }
+
+
+
 
   render() {
     return (
       <div>
-        { currentUser() ? 
-          <div id="workouts"><Workouts workouts={this.displayFilteredWorkouts(this.state.filters.type)} delete={this.props.deleteWorkout} filter={this.filter}/></div> 
-          : <Redirect to="/login" /> }
+        {currentUser() ?
+          <div id="workouts">
+            <Workouts workouts={this.displayFilteredWorkouts(this.state.filters.type)} delete={this.props.deleteWorkout} filter={this.filter} />
+          </div>
+          : <Redirect to="/login" />}
       </div>
-  )}
+    )
+  }
 }
 
 const mapDispatchToProps = dispatch => {
