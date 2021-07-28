@@ -20,20 +20,21 @@ class LoginForm extends Component {
   handleChange = e => {
     const { name, value } = e.target
     this.setState({
-      credentials: {...this.state.credentials, [name]: value}
+      credentials: { ...this.state.credentials, [name]: value }
     })
   }
 
   handleSubmit = e => {
     e.preventDefault()
     const body = { user: this.state.credentials }
-      fetch('http://localhost:3000/api/v1/users/login', postConfObj(body))
+    fetch('http://localhost:3000/api/v1/users/login', postConfObj(body))
       .then(resp => resp.json())
       .then(json => {
         setLocalStorage(json)
         this.props.history.push('/')
       })
-  }  
+      .catch(() => alert("There was an error logging in, please try again!"))
+  }
 
 
   render() {
@@ -42,7 +43,7 @@ class LoginForm extends Component {
         <h1>Log In Here</h1>
         <form onSubmit={this.handleSubmit}>
           <label>Username</label>
-          <input type="text" name="username" onChange={this.handleChange}/>
+          <input type="text" name="username" onChange={this.handleChange} />
           <label>Password</label>
           <input onChange={this.handleChange} type="password" name="password" />
           <input className="btn" type="submit" value="submit" />
